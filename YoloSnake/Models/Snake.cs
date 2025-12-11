@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 namespace YoloSnake.Models
 {
- 
     using Enums;
     using Interfaces;
 
@@ -11,25 +10,25 @@ namespace YoloSnake.Models
     {
         private const Direction StartDirection = Direction.Right;
         private LinkedList<IPosition> positions; private readonly char symbol;
-        public Snake(char symbol,
-            int startX,
-            int startY,
-            int initialLength
-        )
+        public Snake(char symbol, int startX,int startY,int initialLength)
         {
             this.symbol = symbol;
             this.InitializeSnakeBody(startX, startY, initialLength);
             this.Direction = StartDirection;
         }
-        public IPosition Head { get { return this.positions.First.Value; } }
-        public Direction Direction { get; private set; }
-        public void Eat(IPosition position) {
-
-            this.positions.AddLast(
-                position
-                                   );
+        public IPosition Head
+        { get 
+            { 
+                return this.positions.First.Value; 
+            } 
         }
-        public void ChangeDirection(Direction newDirection) {
+        public Direction Direction { get; private set; }
+        public void Eat(IPosition position) 
+        {
+          this.positions.AddLast(position);
+        }
+        public void ChangeDirection(Direction newDirection) 
+        {
             switch (newDirection)
             {
                 case Direction.Up: if (this.Direction != Direction.Down) this.Direction = newDirection; break;
